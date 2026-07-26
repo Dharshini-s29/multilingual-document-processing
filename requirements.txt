@@ -1,0 +1,30 @@
+# ── Multilingual IDP Backend Dependencies ──
+# Core API
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+python-multipart==0.0.9
+
+# Document Parsing
+pdfplumber==0.11.0
+pytesseract==0.3.10
+Pillow==10.4.0
+pdf2image==1.17.0
+
+# NLP & Language Processing
+spacy==3.7.5
+langdetect==1.0.9
+regex==2024.5.15
+
+# Indic NLP
+indic-transliteration==2.3.56
+
+# Phonetics
+jellyfish==1.1.0
+
+# Sentence Transformers (for semantic similarity)
+sentence-transformers==3.0.0
+
+# Utilities
+pydantic==2.8.0
+python-dotenv==1.0.1
+aiofiles==24.1.0

@@ -1,71 +1,73 @@
-# 📄 Multilingual Document Processing
+# React + TypeScript + Vite
 
-An AI-powered web application for extracting, processing, and analyzing multilingual text from PDFs and images using OCR and Natural Language Processing (NLP).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🚀 Features
+Currently, two official plugins are available:
 
-- 📄 Extract text from PDFs and images
-- 🔍 OCR support for scanned documents
-- 🌍 Multilingual document processing
-- 🔤 Phonetic normalization
-- 🔀 Code-mixed language analysis
-- ⚡ FastAPI REST API
-- 💻 React-based user interface
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🛠️ Tech Stack
+## React Compiler
 
-### Frontend
-- React
-- HTML
-- CSS
-- JavaScript
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Backend
-- Python
-- FastAPI
+## Expanding the ESLint configuration
 
-### AI / NLP
-- OCR
-- Natural Language Processing
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 📂 Project Structure
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```
-project/
-│── backend/
-│── frontend/
-│── README.md
-│── requirements.txt
-```
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## ⚙️ Installation
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Frontend
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-cd frontend
-npm install
-npm run dev
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-![alt text](image-1.png)
-<video controls src="Recording 2026-05-10 221502.mp4" title="Title"></video>
-
-## 🎯 Future Enhancements
-
-- RAG Integration
-- LLM-based document understanding
-- Semantic Search
-- Cloud Deployment (AWS/Azure)
-
-## 👩‍💻 Author
-
-**Dharshini S**
